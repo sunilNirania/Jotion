@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
@@ -32,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-[#1F1F1F]`}>
         <ConvexClientProvider>
           <ThemeProvider
             attribute='class'
@@ -41,6 +42,7 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey='jotion-theme'
           >
+            <Toaster position='bottom-center'/>
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
