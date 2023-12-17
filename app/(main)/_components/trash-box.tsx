@@ -52,9 +52,8 @@ export const TrashBox = () => {
             success: "Note deleted!",
             error: "Error!"
         })
-        
-        if(params.documentId == documentId)
-            router.push("/documents")
+    
+        router.push("/documents")
     }
 
     if(documents === undefined) return (
