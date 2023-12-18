@@ -2,7 +2,10 @@
 
 import {
     BlockNoteEditor,
-    PartialBlock
+    BlockSchemaFromSpecs,
+    InlineContentSchemaFromSpecs,
+    PartialBlock,
+    StyleSchemaFromSpecs
 } from "@blocknote/core";
 
 import{
@@ -11,6 +14,7 @@ import{
 } from "@blocknote/react";
 
 import "@blocknote/core/style.css"
+
 
 interface EditorProps {
     onChange: (value: string) => void;
@@ -40,7 +44,7 @@ const Editor = ({
 
     const editor: BlockNoteEditor = useBlockNote({
         editable,
-        initialContent: initialContent? JSON.parse(initialContent) as PartialBlock[] : undefined,
+        initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock<BlockSchemaFromSpecs<any>, InlineContentSchemaFromSpecs<any>, StyleSchemaFromSpecs<any>>[] : undefined,
         onEditorContentChange: (editor) => {
             onChange(JSON.stringify(editor.topLevelBlocks,null,2));
         },
